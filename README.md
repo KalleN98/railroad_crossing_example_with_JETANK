@@ -1,7 +1,8 @@
 # Railroad crossing example with JETANK
 
 Jetbot is an open source AI Robot based on the Nvidia Jetson Nano ([Jetbot Repository](https://github.com/NVIDIA-AI-IOT/jetbot))
-This program uses collision avoidance and road following examples from jetbot. Program detects train with colors so make sure the background dont have same color as your train have.
+This program uses collision avoidance and road following examples from jetbot. 
+Program detects train with colors so make sure the background dont have same color as your train have.
 
 ## Table of Contents
 
@@ -13,7 +14,7 @@ This program uses collision avoidance and road following examples from jetbot. P
 
 ## Requirements
 
-Program requires jetbot as a hardware and as a software it requires pre-built jetbot SD card image ([jetbot image](https://jetbot.org/master/software_setup/sd_card.html)).
+Program requires jetbot as a hardware but if you want to use servos then you need JETANK as a hardware and as a software it requires pre-built jetbot SD card image ([jetbot image](https://jetbot.org/master/software_setup/sd_card.html)).
 Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 JetPack version and 0.4.3 JetBot version.
 
 ## Collision avoidance
@@ -33,8 +34,9 @@ Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 J
 
 ## Usage
 
-1. After you have those both models trained to trt models then you must put those both scripts inside the program folder and check those model names are correct when executing program.
-2. After that you can use my program to detect train with colors. 
+1. After you have those both models trained to trt models then you must put those both scripts inside the program folder and check that those model names are correct when executing program.
+2. After that you can use program to detect train with colors which are currently blue or/and yellow.
+3. You can change those color values and you can change stop thresshold value also to trigger easier.
 
   **Note**: Speed values are zero so when program is executed you have to adjust those speed values when robot moves to the place where it should stop.
 
