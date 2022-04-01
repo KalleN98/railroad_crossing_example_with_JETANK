@@ -1,8 +1,12 @@
 # Railroad crossing example with JETANK
 
-Jetbot is an open source AI Robot based on the Nvidia Jetson Nano ([Jetbot Repository](https://github.com/NVIDIA-AI-IOT/jetbot))
-This program uses collision avoidance and road following examples from jetbot. 
-Program detects train with colors so make sure the background dont have same color as your train have.
+Jetbot is an open source AI Robot based on the Nvidia Jetson Nano ([Jetbot Repository](https://github.com/NVIDIA-AI-IOT/jetbot)).
+
+This program uses collision avoidance and road following examples from jetbot.
+
+Program moves jetbot to right place and knows when to stop if you have well trained models for those and it detects train with colors so make sure the background dont have same color as your train have.
+
+Repository has some example images for those models.
 
 ## Table of Contents
 
@@ -15,11 +19,18 @@ Program detects train with colors so make sure the background dont have same col
 ## Requirements
 
 Program requires jetbot as a hardware but if you want to use servos then you need JETANK as a hardware and as a software it requires pre-built jetbot SD card image ([jetbot image](https://jetbot.org/master/software_setup/sd_card.html)).
+
 Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 JetPack version and 0.4.3 JetBot version.
 
 ## Collision avoidance
 
-1. You need to train your collision avoidance model which contains free and blocked classes. Blocked class was modified to stop class in this program but it is not necessary to change it. ```Free``` images consist something where robot and ```blocked``` images consist images where it should stop. Use data_collection.ipynb for that. 
+  **Note**:When taking images for model, I lowered the camera little bit with command and import to get better results.
+  
+  ```from SCSCtrl import TTLServo```
+  
+  ```TTLServo.servoAngleCtrl(5,10,1,150)```
+
+1. You need to train your collision avoidance model which contains free and blocked classes. Blocked class was modified to stop class in this program but if you dont change it then you have to change stop class stuff in my program to blocked class stuff. ```Free``` images consist something where robot can go and ```stop``` images consist images where it should stop. Use data_collection_with_stop_class.ipynb for collecting ```stop``` and ```free``` classes that I provided or you can use jetbot own data_collection.ipynb. 
 
   **Note**:Also add images when train is coming through when robot is stopped so robot stays stopped when trains comes.
 
@@ -28,17 +39,27 @@ Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 J
 
 ## Road following
 
+**Note**:When taking images for model, I lowered the camera little bit with command and import to get better results
+  
+  ```from SCSCtrl import TTLServo```
+  
+  ```TTLServo.servoAngleCtrl(5,10,1,150)```
+
 1. Collect images which consist image coordinates x and y where robot should go, you can use gamepad to get those images also like I used in this program.
 2. After that you train your model in train_model.ipynb wihch uses also Resnet18 and it predicts where robot should go with those coordinates.
 3. Then you optimize the trained model by using TensorRT for faster inference in live_demo_build_trt.ipynb.
 
 ## Usage
 
-1. After you have those both models trained to trt models then you must put those both scripts inside the program folder and check that those model names are correct when executing program.
-2. After that you can use program to detect train with colors which are currently blue or/and yellow.
-3. You can change those color values and you can change stop thresshold value also to trigger easier.
+**Note**:If you dont have servos you can remove those from notebook
 
-  **Note**: Speed values are zero so when program is executed you have to adjust those speed values when robot moves to the place where it should stop.
+1. When you have those both models trained to trt models then you must put those both scripts inside the program folder and check that those model names are correct when executing program.
+2. After that you can use program to detect train or other moving object with colors which are currently blue or/and yellow.
+3. You can change those color values and you can change stop threshold value also to trigger easier because program has very small threshold.
+
+  **Note**: Speed values are zero so when executing program you have to adjust those speed values. For video I used speed gain 0.30 and steering gain 0.05.
+  
+  **Note**: When using colors to detect moving train check that daylight dont cause problems because it can cause problems especially with blue color.
 
 ## Maintainers
 
