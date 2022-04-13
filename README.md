@@ -66,6 +66,8 @@ Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 J
   
   **Note**: When using colors to detect moving train check that daylight dont cause problems because it can cause problems especially with blue color.
   
+  **Note**: You can change servos or servo values to get different movement but if your using movement function then servos movement must not be visible to the camera because it could turn into an eternal loop
+  
 Example of images used in this project can be found in this [link](https://drive.google.com/drive/folders/1wVX1dn00rK_c2wsZMCX5Rq0Ec8OwM_N0?usp=sharing)
 
 ## Maintainers
