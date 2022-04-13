@@ -4,7 +4,7 @@ Jetbot is an open source AI Robot based on the Nvidia Jetson Nano ([Jetbot Repos
 
 This program uses collision avoidance and road following examples from jetbot.
 
-Program moves jetbot to right place and knows when to stop if you have well trained models for those and it detects train with colors so make sure the background dont have same color as your train have.
+Program moves jetbot to right place and knows when to stop if you have well trained models for those and it detects train with colors or movement so make sure the background dont have same color as your train have or there is no other movement. Also you can use both same time and use them to detect other vehicles also.
 
 Repository has some example images for those models.
 
@@ -54,7 +54,7 @@ Program is build with Jetson Nano (4GB) SD card image from there which has 4.5 J
 **Note**:If you dont have servos you can remove those from notebook
 
 1. When you have those both models trained to trt models then you must put those both scripts inside the program folder and check that those model names are correct when executing program.
-2. After that you can use program to detect train or other moving object with colors which are currently blue or/and yellow.
+2. After that you can use program to detect train or other moving object with colors which are currently blue or/and yellow or movement or both, you can comment other out if you want only one option.
 3. You can change those color values and you can change stop threshold value also to trigger easier because program has very small threshold.
 
   **Note**: Speed values are zero so when executing program you have to adjust those speed values. For video I used speed gain 0.30 and steering gain 0.05.
